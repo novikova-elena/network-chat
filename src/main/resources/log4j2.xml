@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+    <Properties>
+        <Property name="basePath">logs</Property>
+    </Properties>
+
+    <Appenders>
+        <File name="FILE" fileName="${basePath}/logfile.log" append="true">
+            <PatternLayout pattern="%-5p %d{yyyy-MM-dd HH:mm:ss} [%t] %C (%F:%L) - %m%n"/>
+        </File>
+
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%-5p %d{yyyy-MM-dd HH:mm:ss} [%t] %C:%L (%F:%L) - %m%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+
+        <Logger name="ru.gb.chat.server" level="debug" additivity="false">
+            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+
+    </Loggers>
+
+</Configuration>
